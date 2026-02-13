@@ -10,8 +10,8 @@ def calculate_efficiency(score: float | None, cost: float) -> float:
         float: Calculated efficiency (Score / Cost). Returns 0.0 if data is invalid.
     """
     # Defensive Check: Handle missing scores or zero-cost projects
-    if score is None or cost <= 0:
-        return 0.0
+    #if score is None or cost <= 0:
+       # return 0.0
     
     return round(score / cost, 4)
 
