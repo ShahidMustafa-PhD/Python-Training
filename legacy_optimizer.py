@@ -1,7 +1,7 @@
 # Project Optimus-Academic Legacy Version 1.0
 # Warning: Do not touch the math logic. It is fragile.
 
-import math
+#import math
 
 # --- HARDCODED DATA ---
 # In a professional app, this should be in a CSV or Database
@@ -21,7 +21,7 @@ for i in range(len(p_names)):
     name = p_names[i]
     cost = p_costs[i]
     score = p_scores[i]
-
+ 
     # Math Calculation for Efficiency
     # BUG: This will cause a ZeroDivisionError on Project 3
     # BUG: This will cause a TypeError on Project 5 (NoneType)
