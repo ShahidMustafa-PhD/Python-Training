@@ -10,8 +10,8 @@ on:
 # 3. What jobs should the robot do?
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest    # Use a fresh Linux server hosted by GitHub
-
+    #runs-on: ubuntu-latest    # Use a fresh Linux server hosted by GitHub
+    runs-on: windows-latest
     steps:
     # Step A: Get the code from your repo onto the robot's server
     - name: Checkout Code
