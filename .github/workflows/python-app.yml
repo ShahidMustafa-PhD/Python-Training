@@ -1,0 +1,42 @@
+name: Python Professional CI  # 1. The name of the pipeline
+
+# 2. When should this robot wake up?
+on:
+  push:
+    branches: [ "main" ]      # Run on pushes to main
+  pull_request:
+    branches: [ "main" ]      # Run when someone tries to merge code
+
+# 3. What jobs should the robot do?
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest    # Use a fresh Linux server hosted by GitHub
+
+    steps:
+    # Step A: Get the code from your repo onto the robot's server
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step B: Install Python (like installing it on a new laptop)
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    # Step C: Install your specific libraries
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ruff pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    # Step D: Check for messy code (Linting)
+    - name: Lint with Ruff
+      run: |
+        # Stop the build if there are syntax errors or undefined names
+        ruff check .
+
+    # Step E: The Moment of Truth - Run Tests
+    - name: Run Test Suite
+      run: |
+        pytest tests/
